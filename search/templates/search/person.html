@@ -1,0 +1,37 @@
+<!--Search Directory for the Bisa Humad Jain Samaj-->
+<!--Copyright (C) 2021  Varun Jain-->
+
+<!--This program is free software: you can redistribute it and/or modify-->
+<!--it under the terms of the GNU Affero General Public License as published-->
+<!--by the Free Software Foundation, either version 3 of the License, or-->
+<!--(at your option) any later version.-->
+
+<!--This program is distributed in the hope that it will be useful,-->
+<!--but WITHOUT ANY WARRANTY; without even the implied warranty of-->
+<!--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the-->
+<!--GNU Affero General Public License for more details.-->
+
+<!--You should have received a copy of the GNU Affero General Public License-->
+<!--along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+{% extends 'search/layout.html' %}
+
+{% block title %}{% if p.MiddleName %}{{p.SurName}}, {{p.Name}} {{p.MiddleName}}{% else %}{{p.SurName}}, {{p.Name}}{% endif %}{% endblock %}
+
+{% block body %}
+    <h1 style="text-align:center">{% if p.MiddleName %}{{p.SurName}}, {{p.Name}} {{p.MiddleName}}{% else %}{{p.SurName}}, {{p.Name}}{% endif %}</h1>
+
+    {% if p.DOB %}
+        Date Of Birth : {{p.DOB}}<p></p>
+        Age : {{p.Age}}<p></p>
+    {% else %}
+        Date Of Birth : Not in Data<p></p>
+        Age : Not in Data<p></p>
+    {% endif %}
+
+    Gender : {{p.Gender}}<p></p>
+
+    Marital Status : {{p.MaritalStatus}}<p></p>
+
+    <a href="{% url 'family' p.FamilyNo %}">Full Family Details</a>
+{% endblock %}

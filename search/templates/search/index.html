@@ -1,0 +1,81 @@
+<!--Search Directory for the Bisa Humad Jain Samaj-->
+<!--Copyright (C) 2021  Varun Jain-->
+
+<!--This program is free software: you can redistribute it and/or modify-->
+<!--it under the terms of the GNU Affero General Public License as published-->
+<!--by the Free Software Foundation, either version 3 of the License, or-->
+<!--(at your option) any later version.-->
+
+<!--This program is distributed in the hope that it will be useful,-->
+<!--but WITHOUT ANY WARRANTY; without even the implied warranty of-->
+<!--MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the-->
+<!--GNU Affero General Public License for more details.-->
+
+<!--You should have received a copy of the GNU Affero General Public License-->
+<!--along with this program.  If not, see <https://www.gnu.org/licenses/>.-->
+
+
+{% extends 'search/layout.html' %}
+
+{% block title %}Search{% endblock %}
+{% load static %}
+
+{% block body %}
+  <h1 style="text-align:center">Bisa Humad Jain Samaj Mumbai</h1>
+  <h2 style="text-align:center" id="type">Search Directory</h2>
+  <div class="btn-group btn-group-toggle" data-toggle="buttons" id="stype" style="width:100%">
+    <label class="btn btn-outline-info border-bottom-0" style="border-bottom-left-radius : 0">
+      <input type="radio" id="snb" checked> Search By Name
+    </label>
+    <label class="btn btn-outline-info border-bottom-0" style="border-bottom-right-radius : 0">
+      <input type="radio" id="sab"> Advanced Search
+    </label>
+  </div>
+  <div id="sname" class="border border-info border-top-0 border-bottom-0 pad" style="display:block;padding-top:10px">
+    <div id="ner" style="margin-bottom:10px"></div>
+    <form id="sbname"  onsubmit="return false">
+      {% csrf_token %}
+      <div class="form-group m">
+      <input class="form-control" type="text" name="name" id="name" placeholder="First Name" onkeypress="return onlyAlphabets(event,this);" /><p></p>
+      <input class="form-control" type="text" name="mname" placeholder="Middle Name" id="mname" onkeypress="return onlyAlphabets(event,this);" /><p></p>
+      <input class="form-control" type="text" name="lname" id="lname" placeholder="Surname" onkeypress="return onlyAlphabets(event,this);" /><p></p>
+      </div>
+      <button class="btn btn-primary" id="sename">Search</button>
+    </form>
+  </div>
+  <div id='nres' class="border border-info border-top-0 pad" style="display:block;padding-top:10px"></div>
+  <div id="sage" class="border border-info border-top-0 border-bottom-0 pad" style="display:none;padding-top:10px">
+    <div id='aer' style="margin-bottom:10px"></div>
+    <form id="sbage" onsubmit="return false">
+      {% csrf_token %}
+      <div class="form-group m">
+      <input class="form-control" type="text" name="aname" id="aname" placeholder="First Name" onkeypress="return onlyAlphabets(event,this);" /><p></p>
+      <input class="form-control" type="text" name="amname" placeholder="Middle Name" id="amname" onkeypress="return onlyAlphabets(event,this);" /><p></p>
+      <input class="form-control" type="text" name="alname" id="alname" placeholder="Surname" onkeypress="return onlyAlphabets(event,this);" /><p></p>
+      <select name="gender" id="gender" style="width:230px" class="form-control">
+        <option value="" disabled selected hidden>Gender</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+        <option value="#">None</option>
+      </select><p></p>
+      <input class="form-control" type="number" name="miage" placeholder="Minimum Age" id="miage" min=1><p></p>
+      <input class="form-control" type="number" name="maage" id="maage" placeholder="Maximum Age" min=1><p></p>
+      <select name="mstat" id="mstat" style="width:230px" class="form-control">
+        <option value="" disabled selected hidden>Marital Status</option>
+        <option value="MR">Married</option>
+        <option value="UM">Unmarried</option>
+        <option value="DE">Divorcee</option>
+        <option value="WR">Widower</option>
+        <option value="WW">Widow</option>
+        <option value="#">None</option>
+      </select><p></p>
+      </div>
+      <button class="btn btn-primary" id="seage">Search</button>
+    </form>
+  </div>
+  <div id='ares' class="border border-info border-top-0 pad" style="display:none;padding-top:10px"></div>
+{% endblock %}
+
+{% block script %}
+  <script src="{% static 'search/search.js' %}"></script>
+{% endblock %}
