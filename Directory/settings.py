@@ -71,7 +71,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'Search.urls'
+ROOT_URLCONF = 'Directory.urls'
 
 TEMPLATES = [
     {
@@ -89,7 +89,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'Search.wsgi.application'
+WSGI_APPLICATION = 'Directory.wsgi.application'
 
 
 # Database
